@@ -1,0 +1,57 @@
+/* Legend Styles */
+/* .legend {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+} */
+
+#legend {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    max-width: 250px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
+}
+
+.legend h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.legend-colors,
+.legend-icon {
+    margin-top: 4px;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    border: 1px solid #000;
+    vertical-align: middle;
+}
+
+.legend-circle {
+    vertical-align: middle;
+}
+
+#legendButton {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border-radius: 4px;
+    border: 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
+}
+
+#legendButton:hover {
+    cursor: pointer;
+}
