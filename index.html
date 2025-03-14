@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+</head>
+
+<!-- Bootstrap 5.3.0 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Maplibre Legend -->
+<!-- <link href='https://www.unpkg.com/@watergis/maplibre-gl-legend@latest/dist/maplibre-gl-legend.css' rel='stylesheet' />
+<script src='https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.js'></script>
+<script src="https://www.unpkg.com/@watergis/maplibre-gl-legend@latest/dist/maplibre-gl-legend.umd.js"></script> -->
+
+<!-- Maplibre -->
+<link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+<script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+
+<!-- GIS Font -->
+<link href="https://viglino.github.io/font-gis/css/font-gis.css" rel="stylesheet" />
+
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/legend.css">
+
+<body>
+    <div id="map"></div>
+
+    <!-- Legend -->
+    <!-- Legend Toggle Button -->
+    <button id="legendButton">
+        <i class="fg-layers-o"></i>
+    </button>
+
+    <!-- Legend Container (hidden by default) -->
+    <div id="legend" class="legend p-2 bg-light rounded">
+        <h4 class="mb-2">Map Legend</h4>
+
+        <!-- Cycle Streets -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="cycleStreetsToggle" checked>
+            <label class="form-check-label" for="cycleStreetsToggle">Cycle Streets</label>
+            <div class="legend-colors ms-4 mt-1">
+                <div class="legend-color" style="background-color: #33a02c;"></div> Cycle street<br>
+                <div class="legend-color" style="background-color: #25502f;"></div> Cycle track<br>
+                <div class="legend-color" style="background-color: #ff7f00;"></div> Pedestrian<br>
+                <div class="legend-color" style="background-color: #c107ca;"></div> Traffic calming
+            </div>
+        </div>
+
+        <!-- Local Bus Routes -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="localBusRoutesToggle" checked>
+            <label class="form-check-label" for="localBusRoutesToggle">Local Bus Routes</label>
+            <div class="legend-colors ms-4 mt-1">
+                <div class="legend-color" style="background-color: #3a528b;"></div> 1 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ<br>
+                <div class="legend-color" style="background-color: #c107ca;"></div> 2 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ<br>
+                <div class="legend-color" style="background-color: #a2a2a2;"></div> 3 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ<br>
+                <div class="legend-color" style="background-color: #db9975;"></div> ΠΡΩΙΝΗ ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ
+            </div>
+        </div>
+
+        <!-- Local Bus Stops -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="localBusStopsToggle" checked>
+            <label class="form-check-label" for="localBusStopsToggle">Local Bus Stops</label>
+            <div class="legend-icon ms-4 mt-1">
+                <img src="/img/bus_stop.png" alt="Bus Stop Icon" style="width:20px; height:20px;">
+            </div>
+        </div>
+
+        <!-- Bike Sharing -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="bikeSharingToggle" checked>
+            <label class="form-check-label" for="bikeSharingToggle">Bike Sharing</label>
+            <div class="legend-icon ms-4 mt-1">
+                <img src="/img/bike_share.png" alt="Bike Sharing Icon" style="width:20px; height:20px;">
+            </div>
+        </div>
+
+        <!-- Mobility Hubs -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="mobilityHubToggle" checked>
+            <label class="form-check-label" for="mobilityHubToggle">Mobility Hubs</label>
+            <div class="legend-icon ms-4 mt-1">
+                <span class="legend-circle"
+                    style="background-color: #800080; width:20px; height:20px; border-radius:50%; display:inline-block;"></span>
+            </div>
+        </div>
+
+        <!-- OASA Stops -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="oasaStopsToggle" checked>
+            <label class="form-check-label" for="oasaStopsToggle">OASA Stops</label>
+            <div class="legend-icon ms-4 mt-1">
+                <span class="legend-circle"
+                    style="background-color: #ac3f2c; width:20px; height:20px; border-radius:50%; display:inline-block;"></span>
+            </div>
+        </div>
+
+        <!-- Penteli Boundaries -->
+        <div class="legend-item form-check form-switch mb-2">
+            <input class="form-check-input" type="checkbox" role="switch" id="penteliBoundariesToggle" checked>
+            <label class="form-check-label" for="penteliBoundariesToggle">Penteli Boundaries</label>
+            <div class="legend-colors ms-4 mt-1">
+                <div class="legend-color" style="background-color: #000000;"></div> Dashed line
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+<!-- Data -->
+<script src="data/bike_sharing.js"></script>
+<script src="data/cycle_streets.js"></script>
+<script src="data/local_bus_routes.js"></script>
+<script src="data/local_bus_stops.js"></script>
+<script src="data/mobility_hub.js"></script>
+<script src="data/oasa_bus_stops.js"></script>
+<script src="data/penteli_boundaries.js"></script>
+
+
+<!-- Custom JS -->
+<script src="js/layers.js"></script>
+<script src="js/legend.js"></script>
+<script src="js/map.js"></script>
+
+</html>
