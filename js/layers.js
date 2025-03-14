@@ -77,7 +77,7 @@ async function addSourcesLayers() {
     });
 
     // Local Bus Stops (Points)
-    const image_bus = await map.loadImage('/img/bus_stop.png');
+    const image_bus = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bus_stop.png');
     map.addImage('bus_stop_img', image_bus.data);
     map.addSource('localBusStopsSource', {
         type: 'geojson',
@@ -95,7 +95,7 @@ async function addSourcesLayers() {
     });
 
     // Bike Sharing (Points)
-    const image_bike = await map.loadImage('/img/bike_share.png');
+    const image_bike = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bike_share.png');
     map.addImage('bike_sharing_img', image_bike.data);
     map.addSource('bikeSharingSource', {
         type: 'geojson',
