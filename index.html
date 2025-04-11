@@ -10,11 +10,6 @@
 <!-- Bootstrap 5.3.0 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Maplibre Legend -->
-<!-- <link href='https://www.unpkg.com/@watergis/maplibre-gl-legend@latest/dist/maplibre-gl-legend.css' rel='stylesheet' />
-<script src='https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.js'></script>
-<script src="https://www.unpkg.com/@watergis/maplibre-gl-legend@latest/dist/maplibre-gl-legend.umd.js"></script> -->
-
 <!-- Maplibre -->
 <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
 <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
@@ -22,100 +17,130 @@
 <!-- GIS Font -->
 <link href="https://viglino.github.io/font-gis/css/font-gis.css" rel="stylesheet" />
 
-
 <!-- Custom CSS -->
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/legend.css">
 
 <body>
-    <div id="map"></div>
+    <div id="title">Νέο Συγκοινωνιακό Δίκτυο Πεντέλης</div>
 
-    <!-- Legend -->
-    <!-- Legend Toggle Button -->
-    <button id="legendButton">
-        <i class="fg-layers-o"></i>
-    </button>
+    <div id="main-container">
 
-    <!-- Legend Container (hidden by default) -->
-    <div id="legend" class="legend p-2 bg-light rounded">
-        <h4 class="mb-2">Map Legend</h4>
+        <!-- Legend Toggle Button -->
+        <button id="legend-button">
+            <i class="fg-layers-o"></i>
+        </button>
 
-        <!-- Cycle Streets -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="cycleStreetsToggle" checked>
-            <label class="form-check-label" for="cycleStreetsToggle">Cycle Streets</label>
-            <div class="legend-colors ms-4 mt-1">
-                <div class="legend-color" style="background-color: #33a02c;"></div> Cycle street<br>
-                <div class="legend-color" style="background-color: #25502f;"></div> Cycle track<br>
-                <div class="legend-color" style="background-color: #ff7f00;"></div> Pedestrian<br>
-                <div class="legend-color" style="background-color: #c107ca;"></div> Traffic calming
+        <!-- Legend Container -->
+        <div id="legend" class="legend p-2 bg-light">
+            <h4 class="mb-2">Υπόμνημα
+                <span id="legend-close">
+                    ×
+                </span>
+            </h4>
+            <hr>
+
+            <!-- Cycle Streets -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="cycleStreetsToggle" checked>
+                <label class="form-check-label" for="cycleStreetsToggle">Δίκτυο Ποδηλάτου</label>
+                <div class="legend-colors ms-4 mt-1">
+                    <div class="legend-color" style="background-color: #33a02c;"></div> Δρόμος Ποδηλάτου<br>
+                    <div class="legend-color" style="background-color: #25502f;"></div> Ποδηλατόδρομος<br>
+                    <div class="legend-color" style="background-color: #ff7f00;"></div> Πεζόδρομος<br>
+                    <div class="legend-color" style="background-color: #c107ca;"></div> Ήπιας Κυκλοφορίας
+                </div>
+            </div>
+
+            <!-- Local Bus Routes -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="localBusRoutesToggle" checked>
+                <label class="form-check-label" for="localBusRoutesToggle">Διαδρομές Τοπικών Λεωφορείων</label>
+                <div class="legend-colors ms-4 mt-1">
+                    <div class="legend-color" style="background-color: #3a528b;"></div> Διαδρομή 1<br>
+                    <div class="legend-color" style="background-color: #c107ca;"></div> Διαδρομή 2<br>
+                    <div class="legend-color" style="background-color: #a2a2a2;"></div> Διαδρομή 3<br>
+                    <div class="legend-color" style="background-color: #db9975;"></div> Πρωινή Διαδρομή<br>
+                </div>
+            </div>
+
+            <!-- Local Bus Stops -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="localBusStopsToggle" checked>
+                <label class="form-check-label" for="localBusStopsToggle">Στάσεις Τοπικών Λεωφορείων</label>
+                <div class="legend-icon ms-4 mt-1">
+                    <img src="https://lotentua.github.io/sum_Penteli_LL/img/bus_stop.png" alt="Bus Stop Icon"
+                        style="width:20px; height:20px;">
+                </div>
+            </div>
+
+            <!-- Bike Sharing -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="bikeSharingToggle" checked>
+                <label class="form-check-label" for="bikeSharingToggle">Κοινόχρηστα Ποδήλατα</label>
+                <div class="legend-icon ms-4 mt-1">
+                    <img src="https://lotentua.github.io/sum_Penteli_LL/img/bike_share.png" alt="Bike Sharing Icon"
+                        style="width:20px; height:20px;">
+                </div>
+            </div>
+
+            <!-- Mobility Hubs -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="mobilityHubToggle" checked>
+                <label class="form-check-label" for="mobilityHubToggle">Κόμβος Κινητικότητας</label>
+                <div class="legend-icon ms-4 mt-1">
+                    <span class="legend-circle"
+                        style="background-color: #800080; width:20px; height:20px; border-radius:50%; display:inline-block;"></span>
+                </div>
+            </div>
+
+            <!-- OASA Stops -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="oasaStopsToggle" checked>
+                <label class="form-check-label" for="oasaStopsToggle">Στάσεις Λεωφορείων</label>
+                <div class="legend-icon ms-4 mt-1">
+                    <img src="https://lotentua.github.io/sum_Penteli_LL/img/bus_oasa.png" alt="Bus Stop Icon"
+                        style="width:20px; height:20px;">
+                </div>
+            </div>
+
+            <!-- Metro Stops -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="metroStopsToggle" checked>
+                <label class="form-check-label" for="metroStopsToggle">Στάσεις Μετρό/Ηλεκτρικού</label>
+                <div class="legend-icon ms-4 mt-1">
+                    <img src="https://lotentua.github.io/sum_Penteli_LL/img/metro.png" alt="Metro Icon"
+                        style="width:20px; height:20px;">
+                </div>
+            </div>
+
+            <!-- Penteli Boundaries -->
+            <div class="legend-item form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="penteliBoundariesToggle" checked>
+                <label class="form-check-label" for="penteliBoundariesToggle">Όρια Δήμου Πεντέλης</label>
+                <div class="legend-colors ms-4 mt-1">
+                    <div class="legend-color" style="background-color: #000000;"></div>
+                </div>
             </div>
         </div>
 
-        <!-- Local Bus Routes -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="localBusRoutesToggle" checked>
-            <label class="form-check-label" for="localBusRoutesToggle">Local Bus Routes</label>
-            <div class="legend-colors ms-4 mt-1">
-                <div class="legend-color" style="background-color: #3a528b;"></div> 1 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ<br>
-                <div class="legend-color" style="background-color: #c107ca;"></div> 2 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ<br>
-                <div class="legend-color" style="background-color: #a2a2a2;"></div> 3 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ<br>
-                <div class="legend-color" style="background-color: #db9975;"></div> ΠΡΩΙΝΗ ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ
-            </div>
+        <!-- Map Container -->
+        <div id="map"></div>
+
+        <!-- LOGOS -->
+        <div class="logo-div" id="sum-logo-div">
+            <a href="https://sum-project.eu/" target="_blank">
+                <img class="logo-img" src="https://lotentua.github.io/sum_Penteli_LL/img/sum_logo.png"
+                    alt="SUM Project Logo" />
+            </a>
         </div>
 
-        <!-- Local Bus Stops -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="localBusStopsToggle" checked>
-            <label class="form-check-label" for="localBusStopsToggle">Local Bus Stops</label>
-            <div class="legend-icon ms-4 mt-1">
-                <img src="https://lotentua.github.io/sum_Penteli_LL/img/bus_stop.png" alt="Bus Stop Icon"
-                    style="width:20px; height:20px;">
-            </div>
-        </div>
-
-        <!-- Bike Sharing -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="bikeSharingToggle" checked>
-            <label class="form-check-label" for="bikeSharingToggle">Bike Sharing</label>
-            <div class="legend-icon ms-4 mt-1">
-                <img src="https://lotentua.github.io/sum_Penteli_LL/img/bike_share.png" alt="Bike Sharing Icon"
-                    style="width:20px; height:20px;">
-            </div>
-        </div>
-
-        <!-- Mobility Hubs -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="mobilityHubToggle" checked>
-            <label class="form-check-label" for="mobilityHubToggle">Mobility Hubs</label>
-            <div class="legend-icon ms-4 mt-1">
-                <span class="legend-circle"
-                    style="background-color: #800080; width:20px; height:20px; border-radius:50%; display:inline-block;"></span>
-            </div>
-        </div>
-
-        <!-- OASA Stops -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="oasaStopsToggle" checked>
-            <label class="form-check-label" for="oasaStopsToggle">OASA Stops</label>
-            <div class="legend-icon ms-4 mt-1">
-                <span class="legend-circle"
-                    style="background-color: #ac3f2c; width:20px; height:20px; border-radius:50%; display:inline-block;"></span>
-            </div>
-        </div>
-
-        <!-- Penteli Boundaries -->
-        <div class="legend-item form-check form-switch mb-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="penteliBoundariesToggle" checked>
-            <label class="form-check-label" for="penteliBoundariesToggle">Penteli Boundaries</label>
-            <div class="legend-colors ms-4 mt-1">
-                <div class="legend-color" style="background-color: #000000;"></div> Dashed line
-            </div>
+        <div class="logo-div" id="penteli-logo-div">
+            <a href="https://penteli.gov.gr/" target="_blank">
+                <img class="logo-img" src="https://lotentua.github.io/sum_Penteli_LL/img/penteli_logo.svg"
+                    alt="Penteli Logo" />
+            </a>
         </div>
     </div>
-
-
-
 </body>
 
 
@@ -126,6 +151,7 @@
 <script src="data/local_bus_stops.js"></script>
 <script src="data/mobility_hub.js"></script>
 <script src="data/oasa_bus_stops.js"></script>
+<script src="data/metro_stops.js"></script>
 <script src="data/penteli_boundaries.js"></script>
 
 

@@ -1,17 +1,187 @@
+html,
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji; */
+}
+
+#title {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 0;
+    box-sizing: border-box;
+    border-bottom: 3px solid #0000004b;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+
+
+    /* background: transparent linear-gradient(90deg, #004494 0%, #004494 100%) 0% 0% no-repeat padding-box; */
+
+    /* background: transparent linear-gradient(90deg, #1d313f 0%, rgb(8, 41, 63) 100%) 0% 0% no-repeat padding-box; */
+    background: linear-gradient(320deg, #0F3143 0%, #0F3143 60%);
+
+
+    /* PENTELI */
+    /* 163042 */
+    /* 6cb48f */
+
+    /* SUM */
+    /* 004494 */
+    /* 98C339 */
+}
+
+
+/* Legend styling */
+#legend {
+    color: #163042;
+    width: 250px;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+    z-index: 9999;
+    overflow-y: auto;
+    box-shadow: 3px 0px 3px 0px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg,
+            #ffffff 0%,
+            #ffffff 60%);
+
+    /* 9fc34b3c */
+    /* 9fc34b57 */
+}
+
+.form-check-input[type="checkbox"]:checked {
+    background-color: #6cb48f;
+    border-color: #6cb48f;
+}
+
+#main-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-height: calc(100% - 69px);
+    box-sizing: border-box;
+    position: relative;
 }
 
 #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    flex: 1;
+    min-width: 0;
 }
 
 
+
+
+#legend-close {
+    float: right;
+    font-weight: bold;
+}
+
+#legend-close:hover {
+    cursor: pointer;
+}
+
+
+#legend-button {
+    position: absolute;
+    display: none;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+}
+
+#legend-button:hover {
+    cursor: pointer;
+}
+
+
+
+
+/* LOGOS */
+.logo-div {
+    background-color: #fff;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    z-index: 99;
+}
+
+#sum-logo-div {
+    bottom: 10px;
+}
+
+#penteli-logo-div {
+    bottom: 50px;
+}
+
+.logo-img {
+    width: 75px;
+}
+
+
+
+/* LEGEND ELEMENTS */
+.legend h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.legend-colors,
+.legend-icon {
+    margin-top: 4px;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    border: 1px solid #000;
+    vertical-align: middle;
+}
+
+.legend-circle {
+    vertical-align: middle;
+}
+
+
+
+#legend-button:hover {
+    cursor: pointer;
+}
+
+#legend>hr {
+    width: 200px;
+    margin-left: 10px
+}
+
+
+/* Remove or comment out any 'position: absolute' or fixed height rules for #map
+   that were there previously. */
+
+/* MapLibre controls (optional styling) */
 .maplibregl-ctrl-group button {
     height: 40px !important;
     width: 40px !important;
+}
+
+.maplibregl-ctrl-attrib.maplibregl-compact {
+    display: none !important;
 }

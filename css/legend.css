@@ -1,17 +1,48 @@
-/* Legend Styles */
-/* .legend {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-} */
-
-#legend {
-    display: none;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    max-width: 250px;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
+/* Large screens: keep standard layout */
+@media (min-width: 768px) {
+    #legend-button {
+        display: none;
+        /* Hide the button for desktops */
+    }
 }
+
+/* Small screens: override layout */
+@media (max-width: 767px) {
+
+    /* Make main container display as a block so map can fill width */
+    #main-container {
+        display: block;
+    }
+
+    #legend {
+        display: none;
+        position: absolute;
+        bottom: 0px;
+        /* below the title bar (approx) */
+        background-color: white;
+        z-index: 999;
+    }
+
+    #legend-button {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 1000;
+        padding: 8px 12px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Let the map fill the screen width */
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 
 .legend h4 {
     margin-top: 0;
@@ -37,8 +68,7 @@
     vertical-align: middle;
 }
 
-#legendButton {
-    display: block;
+#legend-button {
     position: absolute;
     bottom: 10px;
     left: 10px;
@@ -52,6 +82,6 @@
     box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
 }
 
-#legendButton:hover {
+#legend-button:hover {
     cursor: pointer;
 }

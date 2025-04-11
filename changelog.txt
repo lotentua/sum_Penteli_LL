@@ -1,0 +1,21 @@
+v1 
+Initial commit
+Features:
+    7 Layers
+    Popups with attributes for all layers
+    Layer Control
+    Legend
+
+v2
+Legend in Greek
+OASA Stops
+    Change to a Bus symbol
+    Larger Icon
+Add Metro Stations
+    Metro symbol
+Logo SUM - Penteli
+    Add hyper link for each website
+Add Title
+Turn feature popups off
+Increase width for line layers
+Legend always on

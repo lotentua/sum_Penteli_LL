@@ -7,6 +7,7 @@ function setupLegendToggles() {
         { checkbox: 'bikeSharingToggle', layer: 'bikeSharing' },
         { checkbox: 'mobilityHubToggle', layer: 'mobilityHub' },
         { checkbox: 'oasaStopsToggle', layer: 'oasaStops' },
+        { checkbox: 'metroStopsToggle', layer: 'metroStops' },
         { checkbox: 'penteliBoundariesToggle', layer: 'penteliBoundaries' }
     ];
 
@@ -22,8 +23,9 @@ function setupLegendToggles() {
 setupLegendToggles();
 
 // Legend button toggle behavior
-const legendButton = document.getElementById('legendButton');
+const legendButton = document.getElementById('legend-button');
 const legendDiv = document.getElementById('legend');
+const legendClose = document.getElementById('legend-close');
 
 // Toggle legend display on button click
 legendButton.addEventListener('click', function () {
@@ -34,24 +36,37 @@ legendButton.addEventListener('click', function () {
     }
 });
 
-// Optionally, show legend on hover over the button
-legendButton.addEventListener('mouseenter', function () {
-    legendDiv.style.display = 'block';
-});
-legendButton.addEventListener('mouseleave', function () {
-    // Optionally hide legend after a slight delay (if not toggled open)
-    setTimeout(() => {
-        // Check if the mouse is over the legend
-        if (!legendDiv.matches(':hover')) {
-            legendDiv.style.display = 'none';
-        }
-    }, 300);
+
+legendButton.addEventListener('click', () => {
+    legendDiv.style.display = legendDiv.style.display = 'block';
+    legendButton.style.display = 'none!important';
+})
+
+legendClose.addEventListener('click', () => {
+    legendDiv.style.display = 'none';
+    legendButton.style.display = 'block';
 });
 
-// Also keep the legend visible if the mouse is over it
-legendDiv.addEventListener('mouseenter', function () {
-    legendDiv.style.display = 'block';
+
+// On window resize, if width>= 768px, show legend
+window.addEventListener('resize', function () {
+    if (window.innerWidth >= 768) {
+        legendDiv.style.display = 'block';
+        legendButton.style.display = 'none';
+    } else {
+        legendDiv.style.display = 'none';
+        legendButton.style.display = 'block';
+    }
 });
-legendDiv.addEventListener('mouseleave', function () {
-    legendDiv.style.display = 'none';
+
+
+// On page load, check window width and set legend display accordingly
+window.addEventListener('load', function () {
+    if (window.innerWidth >= 768) {
+        legendDiv.style.display = 'block';
+        legendButton.style.display = 'none';
+    } else {
+        legendDiv.style.display = 'none';
+        legendButton.style.display = 'block';
+    }
 });

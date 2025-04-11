@@ -45,7 +45,7 @@ async function addSourcesLayers() {
                 'Traffic calming', '#c107ca',
                 '#000000' // Default
             ],
-            'line-width': 4
+            'line-width': 6
         }
     });
 
@@ -72,7 +72,7 @@ async function addSourcesLayers() {
                 'ΠΡΩΙΝΗ ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#db9975',
                 '#000000' // Default
             ],
-            'line-width': 4
+            'line-width': 6
         }
     });
 
@@ -128,17 +128,38 @@ async function addSourcesLayers() {
     });
 
     // OASA Stops (Points)
+    const image_bus_oasa = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bus_oasa.png');
+    map.addImage('bus_oasa_img', image_bus_oasa.data);
     map.addSource('oasaStopsSource', {
         type: 'geojson',
         data: oasaStopsGeoJSON
     });
     map.addLayer({
         id: 'oasaStops',
-        type: 'circle',
+        type: 'symbol',
         source: 'oasaStopsSource',
-        paint: {
-            'circle-radius': 2,
-            'circle-color': '#ac3f2c'
+        layout: {
+            'icon-image': 'bus_oasa_img',
+            'icon-size': 0.3,
+            'icon-allow-overlap': true
+        }
+    });
+
+    // OASA Stops (Points)
+    const image_metro = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/metro.png');
+    map.addImage('metro_img', image_metro.data);
+    map.addSource('metroStopsSource', {
+        type: 'geojson',
+        data: metroStopsGeoJSON
+    });
+    map.addLayer({
+        id: 'metroStops',
+        type: 'symbol',
+        source: 'metroStopsSource',
+        layout: {
+            'icon-image': 'metro_img',
+            'icon-size': 0.7,
+            'icon-allow-overlap': true
         }
     });
 

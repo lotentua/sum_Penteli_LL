@@ -24,50 +24,52 @@ map.on('load', function () {
     addSourcesLayers();
 });
 
-// Add events to clickable layers
-clickableLayers.forEach(layerId => {
 
-    // Mouse enter
-    map.on('mouseenter', layerId, () => {
-        map.getCanvas().style.cursor = 'pointer';
-    });
+// EVENTS FOR CLICKABLE LAYERS - INACTIVE FOR NOW
+// // Add events to clickable layers
+// clickableLayers.forEach(layerId => {
 
-    // Mouse leave
-    map.on('mouseleave', layerId, () => {
-        map.getCanvas().style.cursor = '';
-    });
+//     // Mouse enter
+//     map.on('mouseenter', layerId, () => {
+//         map.getCanvas().style.cursor = 'pointer';
+//     });
 
-    // Mouse click
-    map.on('click', layerId, (e) => {
-        // Check if there are features under the mouse
-        if (!e.features || !e.features.length) return;
+//     // Mouse leave
+//     map.on('mouseleave', layerId, () => {
+//         map.getCanvas().style.cursor = '';
+//     });
 
-        // Get the first feature and properties
-        const feature = e.features[0];
-        const properties = feature.properties;
+//     // Mouse click
+//     map.on('click', layerId, (e) => {
+//         // Check if there are features under the mouse
+//         if (!e.features || !e.features.length) return;
 
-        // Add a popup with the feature properties, passing e.lngLat to the function
-        attributeTablePopup(properties, e.lngLat);
-    });
-});
+//         // Get the first feature and properties
+//         const feature = e.features[0];
+//         const properties = feature.properties;
 
-// FUNCTION to create a popup with the feature properties
-function attributeTablePopup(properties, lngLat) {
-    // Remove previous popups
-    document.querySelectorAll('.maplibregl-popup').forEach(popup => popup.remove());
+//         // Add a popup with the feature properties, passing e.lngLat to the function
+//         attributeTablePopup(properties, e.lngLat);
+//     });
+// });
 
-    // Build an HTML table with Bootstrap 5 classes
-    let tableHTML = `<table class="table table-striped table-bordered mb-0">`;
-    for (const key in properties) {
-        if (properties.hasOwnProperty(key)) {
-            tableHTML += `<tr><th scope="row">${key}</th><td>${properties[key]}</td></tr>`;
-        }
-    }
-    tableHTML += `</table>`;
+// // FUNCTION to create a popup with the feature properties
+// function attributeTablePopup(properties, lngLat) {
+//     // Remove previous popups
+//     document.querySelectorAll('.maplibregl-popup').forEach(popup => popup.remove());
 
-    // Create and show a popup at the clicked location
-    new maplibregl.Popup({ maxWidth: '300px' })
-        .setLngLat(lngLat)
-        .setHTML(tableHTML)
-        .addTo(map);
-}
+//     // Build an HTML table with Bootstrap 5 classes
+//     let tableHTML = `<table class="table table-striped table-bordered mb-0">`;
+//     for (const key in properties) {
+//         if (properties.hasOwnProperty(key)) {
+//             tableHTML += `<tr><th scope="row">${key}</th><td>${properties[key]}</td></tr>`;
+//         }
+//     }
+//     tableHTML += `</table>`;
+
+//     // Create and show a popup at the clicked location
+//     new maplibregl.Popup({ maxWidth: '300px' })
+//         .setLngLat(lngLat)
+//         .setHTML(tableHTML)
+//         .addTo(map);
+// }
