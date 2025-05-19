@@ -12,8 +12,8 @@
 // Array of all layers, update with new layers
 const clickableLayers = [
     'cycleStreets',
-    'localBusRoutes',
-    'localBusStops',
+    // 'localBusRoutes',
+    // 'localBusStops',
     'bikeSharing',
     'mobilityHub',
     'oasaStops',
@@ -76,23 +76,23 @@ async function addSourcesLayers() {
     //     }
     // });
 
-    // Local Bus Stops (Points)
-    const image_bus = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bus_stop.png');
-    map.addImage('bus_stop_img', image_bus.data);
-    map.addSource('localBusStopsSource', {
-        type: 'geojson',
-        data: localBusStopsGeoJSON
-    });
-    map.addLayer({
-        id: 'localBusStops',
-        type: 'symbol',
-        source: 'localBusStopsSource',
-        layout: {
-            'icon-image': 'bus_stop_img',
-            'icon-size': 0.5,
-            'icon-allow-overlap': true
-        }
-    });
+    // // Local Bus Stops (Points)
+    // const image_bus = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bus_stop.png');
+    // map.addImage('bus_stop_img', image_bus.data);
+    // map.addSource('localBusStopsSource', {
+    //     type: 'geojson',
+    //     data: localBusStopsGeoJSON
+    // });
+    // map.addLayer({
+    //     id: 'localBusStops',
+    //     type: 'symbol',
+    //     source: 'localBusStopsSource',
+    //     layout: {
+    //         'icon-image': 'bus_stop_img',
+    //         'icon-size': 0.5,
+    //         'icon-allow-overlap': true
+    //     }
+    // });
 
     // Bike Sharing (Points)
     const image_bike = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bike_share.png');

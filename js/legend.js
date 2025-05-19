@@ -3,7 +3,7 @@ function setupLegendToggles() {
     const legendMappings = [
         { checkbox: 'cycleStreetsToggle', layer: 'cycleStreets' },
         // { checkbox: 'localBusRoutesToggle', layer: 'localBusRoutes' },
-        { checkbox: 'localBusStopsToggle', layer: 'localBusStops' },
+        // { checkbox: 'localBusStopsToggle', layer: 'localBusStops' },
         { checkbox: 'bikeSharingToggle', layer: 'bikeSharing' },
         { checkbox: 'mobilityHubToggle', layer: 'mobilityHub' },
         { checkbox: 'oasaStopsToggle', layer: 'oasaStops' },
