@@ -49,32 +49,32 @@ async function addSourcesLayers() {
         }
     });
 
-    // Local Bus Routes (LineStrings)
-    map.addSource('localBusRoutesSource', {
-        type: 'geojson',
-        data: localBusRoutesGeoJSON
-    });
-    map.addLayer({
-        id: 'localBusRoutes',
-        type: 'line',
-        source: 'localBusRoutesSource',
-        layout: {
-            'line-join': 'round',
-            'line-cap': 'round'
-        },
-        paint: {
-            'line-color': [
-                'match',
-                ['get', 'Layer'],
-                '1 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#3a528b',
-                '2 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#c107ca',
-                '3 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#a2a2a2',
-                'ΠΡΩΙΝΗ ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#db9975',
-                '#000000' // Default
-            ],
-            'line-width': 6
-        }
-    });
+    // // Local Bus Routes (LineStrings)
+    // map.addSource('localBusRoutesSource', {
+    //     type: 'geojson',
+    //     data: localBusRoutesGeoJSON
+    // });
+    // map.addLayer({
+    //     id: 'localBusRoutes',
+    //     type: 'line',
+    //     source: 'localBusRoutesSource',
+    //     layout: {
+    //         'line-join': 'round',
+    //         'line-cap': 'round'
+    //     },
+    //     paint: {
+    //         'line-color': [
+    //             'match',
+    //             ['get', 'Layer'],
+    //             '1 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#3a528b',
+    //             '2 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#c107ca',
+    //             '3 ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#a2a2a2',
+    //             'ΠΡΩΙΝΗ ΔΙΑΔΡΟΜΗ ΛΕΩΦΟΡΕΙΟΥ', '#db9975',
+    //             '#000000' // Default
+    //         ],
+    //         'line-width': 6
+    //     }
+    // });
 
     // Local Bus Stops (Points)
     const image_bus = await map.loadImage('https://lotentua.github.io/sum_Penteli_LL/img/bus_stop.png');

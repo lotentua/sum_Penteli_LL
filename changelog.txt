@@ -7,15 +7,22 @@ Features:
     Legend
 
 v2
-Legend in Greek
-OASA Stops
-    Change to a Bus symbol
-    Larger Icon
-Add Metro Stations
-    Metro symbol
-Logo SUM - Penteli
-    Add hyper link for each website
-Add Title
-Turn feature popups off
-Increase width for line layers
-Legend always on
+1. Legend in Greek
+2. OASA Stops
+    a. Change to a Bus symbol
+    b. Larger Icon
+3. Add Metro Stations
+    a. Metro symbol
+4. Logo SUM - Penteli
+    a. Add hyper link for each website
+5. Add Title (Follow Penteli website Theme)
+6. Turn feature popups off
+7. Increase width for line layers
+8. Legend  
+    a. Starts on, when on desktop
+    b. Start off, when on mobile
+    c. Be able to turn on / off
+9. Page Title + Icon (tab)
+
+v3
+Comment out Local bus layer
